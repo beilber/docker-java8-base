@@ -7,22 +7,22 @@
 # existing Minecraft images
 #
 # Authors: Brian Eilber
-# Updated: May 16th, 2016
+# Updated: August 18th, 2017
 # Require: Docker (http://www.docker.io/)
 # -----------------------------------------------------------------------------
 
 
-FROM    ubuntu:14.04
+FROM    ubuntu:16.04
 
 MAINTAINER Brian Eilber <brian.eilber@gmail.com>
 
 ENV     DEBIAN_FRONTEND noninteractive
 
 RUN     apt-get --yes update && \
-	apt-get --yes upgrade && \
-	apt-get --yes install software-properties-common
+        apt-get --yes upgrade && \
+        apt-get --yes install software-properties-common
 
-RUN     sudo apt-add-repository --yes ppa:webupd8team/java && apt-get --yes update
+RUN     add-apt-repository ppa:webupd8team/java && apt-get --yes update
 RUN     echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections  && \
         echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  && \
         apt-get --yes install oracle-java8-installer && \
